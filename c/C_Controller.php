@@ -1,5 +1,5 @@
 <?php
-//
+
 // Базовый класс контроллера.
 //
 abstract class C_Controller
