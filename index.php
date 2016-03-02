@@ -16,5 +16,5 @@ switch (@$_GET['c'])
 	default:
 		$controller = new C_Page();
 }
-  
+
 $controller->Request($action);
