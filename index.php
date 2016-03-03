@@ -1,7 +1,8 @@
 <?php
 
 function __autoload($classname){
-	include_once("c/$classname.php");
+	$type= mb_strtolower(mb_substr($classname, 0,1));
+	include_once("$type/$classname.php");
 }
 
 $action = 'action_';
