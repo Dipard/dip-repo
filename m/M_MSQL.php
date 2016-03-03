@@ -16,7 +16,19 @@ class M_MSQL
 	
 	private function __construct()
 	{
-		// здесь подключение к базе
+		$hostname = 'localhost'; 
+		$username = 'root'; 
+		$password = '';
+		$dbName = 'lesson1';
+		
+		// Языковая настройка.
+		setlocale(LC_ALL, 'ru_RU.UTF-8'); // Устанавливаем нужную локаль (для дат, денег, запятых и пр.)
+		mb_internal_encoding('UTF-8'); // Устанавливаем кодировку строк
+		
+		// Подключение к БД.
+		mysql_connect($hostname, $username, $password) or die('No connect with data base'); 
+		mysql_query('SET NAMES utf8');
+		mysql_select_db($dbName) or die('No data base');// здесь подключение к базе
 	}
 	
 	//
@@ -66,8 +78,9 @@ class M_MSQL
 			else	
 				$value = mysql_real_escape_string($value . '');							
 				$values[] = "'$value'";
-		}
+			}
 		
+
 		$columns_s = implode(',', $columns); 
 		$values_s = implode(',', $values);  
 			
